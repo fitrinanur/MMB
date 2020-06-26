@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ProductType;
 
 class ProductTypeController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        //
+        $product_types = ProductType::all();
+        return view('productTypes.index',compact('product_types'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('productTypes.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product_type = new ProductType();
+        $product_type->name = $request->name;
+        $product_type->desc = $request->description;
+        $product_type->save();
+
+        return redirect()->route('product-type.index');
     }
 
     /**
@@ -56,7 +63,9 @@ class ProductTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product_type = ProductType::findOrFail($id);
+
+        return view('productTypes.edit', compact('product_type'));
     }
 
     /**
@@ -68,7 +77,12 @@ class ProductTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product_type = ProductType::findOrFail($id);
+        $product_type->name = $request->name;
+        $product_type->desc = $request->description;
+        $product_type->update();
+
+        return redirect()->route('product-type.index');
     }
 
     /**
@@ -79,6 +93,9 @@ class ProductTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product_type =  ProductType::findOrFail($id);
+        $product_type->delete();
+
+        return redirect()->route('product-type.index');
     }
 }

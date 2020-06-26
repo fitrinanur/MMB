@@ -50,21 +50,21 @@
         }
 
         .header-info>ul {
-            list-style-type: none;
-            display: inline-flex;
-            padding: 3px;
+        list-style-type: none;
+        display: inline-flex;
+        padding: 3px;
         }
 
         .header-info>ul>li {
             padding: 2px 10px;
             margin-left: 10px;
+            border-radius: 5px;
         }
 
         .header-info>ul>li>a {
             color: white;
             font-size: 25px;
         }
-
         .navbar {
             padding: 7px 0px 13px 13px !important;
         }

@@ -19,7 +19,7 @@
         <div class="card" style="margin-top:0px;">
             <div class="card-body">
                 <h3 class="card-title">Data Product</h3>
-                <a href="{{ route('store.create') }}" class="btn btn-sm btn-info"
+                <a href="{{ route('product.create') }}" class="btn btn-sm btn-info"
                     style="float:right;margin-bottom:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Tambah
                     Toko</a>
                 <table class="table table-striped">
@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->productType()->name }}</td>
+                            <td>{{ $product->ProductType->name }}</td>
                             <td>{{ $product->desc }}</td>
                             <td>
                                 <a href="{{ route('product.show', $product->id)}}" class="btn btn-sm btn-success"><i

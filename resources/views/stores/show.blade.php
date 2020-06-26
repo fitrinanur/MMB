@@ -26,7 +26,7 @@
                         <img class="d-block img-fluid img-thumbnail rounded" src="{{ $picture->path() }}" /><br>
                         @endforeach
                     @else
-                        <img class="d-block img-fluid img-thumbnail rounded" src="{{ public_path('storage/default.png') }}"/><br>
+                        <img class="d-block img-fluid img-thumbnail rounded" src="{{ asset('default.png') }}"/><br>
                     @endif
                 </div>
                 <div class="col-lg-8">

@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use App\ProductType;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    private $product;
+    /**
+    * StoreController constructor.
+    */
+    public function __construct()
+    {
+       $this->middleware('auth');
+
+       $this->product = new ProductService();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +27,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -23,7 +38,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product_types = ProductType::all();
+        return view('products.create', compact('product_types'));
     }
 
     /**
@@ -34,7 +50,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $this->product->store($request);
+
+            flash('Tambah product berhasil!')->success();
+            return redirect()->route('product.index');
+         }
+        catch (\Exception $exception) {
+            flash($exception->getMessage())->error();
+            return redirect()->back();
+        }
+        return redirect()->route('product.index');
     }
 
     /**
@@ -45,7 +71,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -56,7 +83,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product_types = ProductType::all();
+        return view('products.edit', compact('product','product_types'));
     }
 
     /**
@@ -66,9 +95,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        try {
+            $product = $this->product->update($request,$product);
+
+            flash('Update Product berhasil!')->success();
+            return redirect()->route('product.index');
+        }
+         catch (\Exception $exception) {
+             flash($exception->getMessage())->error();
+             return redirect()->back();
+        }
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -79,6 +119,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product =  Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('product.index');
     }
 }

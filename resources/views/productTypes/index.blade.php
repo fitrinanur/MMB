@@ -19,9 +19,9 @@
         <div class="card" style="margin-top:0px;">
             <div class="card-body">
                 <h3 class="card-title">Data Kategori Product</h3>
-                <a href="{{ route('store.create') }}" class="btn btn-sm btn-info"
+                <a href="{{ route('product-type.create') }}" class="btn btn-sm btn-info"
                     style="float:right;margin-bottom:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Tambah
-                    Toko</a>
+                    Kategori</a>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($productTypes as $key => $productType)
+                        @foreach($product_types as $key => $productType)
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $productType->name }}</td>

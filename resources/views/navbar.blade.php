@@ -25,8 +25,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('store.index') }}">Data Toko</a>
-                                <a class="dropdown-item" href="">Data Kategori Furniture</a>
-                                <a class="dropdown-item" href="">Data Furniture</a>  
+                                <a class="dropdown-item" href="{{ route('product-type.index') }}">Data Kategori Furniture</a>
+                                <a class="dropdown-item" href="{{ route('product.index') }}">Data Furniture</a>  
                             </div>
                         </li>
                         @endif
