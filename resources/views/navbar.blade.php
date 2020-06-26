@@ -32,10 +32,10 @@
                         @endif
                     @endguest
                     <li class="nav-item">
-                        <a class="nav-link" href="">Toko Terdekat</a>
+                        <a class="nav-link" href="{{ route('website.nearly')}}">Toko Terdekat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Rute Wisata</a>
+                        <a class="nav-link" href="{{ route('website.direction')}}">Rute Wisata</a>
                     </li>
                 </ul>
 

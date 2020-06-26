@@ -25,8 +25,8 @@ class StoreService
         $store->address = $request->address;
         $store->phone_number = $request->phone_number;
         $store->city()->associate($request->city);
-        $store->lat = $request->latitude;
-        $store->long = $request->longitude;
+        $store->latitude = $request->latitude;
+        $store->longitude = $request->longitude;
         $store->desc = $request->description;
         $store->save();
 
@@ -56,8 +56,8 @@ class StoreService
         $store->name = $request->name;
         $store->address = $request->address;
         $store->city_id =$request->city;
-        $store->lat = $request->latitude;
-        $store->long = $request->longitude;
+        $store->latitude = $request->latitude;
+        $store->longitude = $request->longitude;
         $store->desc = $request->description;
         $store->update();
        
@@ -67,21 +67,20 @@ class StoreService
 
     public function nearbyStore($store, $request)
     {
-        // try {
             $stores = Store::selectRaw("
                 id,
                 city_id,
                 name,
                 desc,
                 address,
-                long,
-                lat,
+                longitude,
+                latitude,
                 ( 6371 * acos( cos( radians('" . $request->latitude . "') )
-                       * cos( radians(lat) )
-                       * cos( radians(long)
+                       * cos( radians(latitude) )
+                       * cos( radians(longitude)
                        - radians('" . $request->longitude . "') )
                        + sin( radians('" . $request->latitude . "') )
-                       * sin( radians(lat) ) ) ) AS distances
+                       * sin( radians(latitude) ) ) ) AS distances
             ");
 
             $stores->with('city');
@@ -91,12 +90,5 @@ class StoreService
             $stores = $stores->whereNotNull('longitude')->get();
 
             return dd($stores);
-
-
-    //     }
-
-    //     catch (\Exception $exception) {
-    //         return $this->response->failedResponse($exception);
-    //     }
     }
 }

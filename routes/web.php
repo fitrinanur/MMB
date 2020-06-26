@@ -25,3 +25,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::resource('product', 'ProductController');
     Route::resource('product-type', 'ProductTypeController');
 });
+
+Route::get('/nearly-page','WebsiteController@nearlyPage')->name('website.nearly');
+Route::post('/nearly-process','WebsiteController@nearlyProcess')->name('website.nearlyProcess');
+Route::post('/recommendation','WebsiteController@getRecommendation')->name('recommendation');
+
+Route::get('/store-direction-page','WebsiteController@directionPage')->name('website.direction');
+Route::post('/store-direction-page','WebsiteController@directionStore')->name('direction.store');

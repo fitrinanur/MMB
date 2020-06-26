@@ -51,11 +51,11 @@
                             </tr>
                             <tr>
                                 <td>Latitude</td>
-                                <td>{{ $store->lat }}</td>
+                                <td>{{ $store->latitude }}</td>
                             </tr>
                             <tr>
                                 <td>Longitude</td>
-                                <td>{{ $store->long }}</td>
+                                <td>{{ $store->longitude }}</td>
                             </tr>
                             <tr>
                                 <td>Deskripsi</td>
@@ -64,7 +64,7 @@
                         </tbody>
                     </table>
                     <iframe width="100%" height="300" marginwidth="0"
-                        src="https://maps.google.com/maps?q={{ $store->lat }},{{ $store->long }}&hl=es;z=16&amp;output=embed">
+                        src="https://maps.google.com/maps?q={{ $store->latitude }},{{ $store->longitude }}&hl=es;z=16&amp;output=embed">
                     </iframe>
                 </div>
             </div>
