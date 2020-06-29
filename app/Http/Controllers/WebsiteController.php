@@ -32,33 +32,41 @@ class WebsiteController extends Controller
         return view('website.index',compact('stores'));
     }
 
-    public function getRecommendation($count = 5){
+    public function getRecommendation($count = 3){
         if(request()->get('lat') != null && request()->get('lon') != null) {
             $latitude = floatval(request('lat'));
             $longitude = floatval(request('lon'));
 
             
 
-            $range = 10;
+            $range = 30;
+            /* for easy to calculate range/radius you need remember this
+            * 1meter  = 10
+            * 2meter  = 20
+            * 3meter  = 30
+            * ....
+            * ...etc
+            */
 
             $stores = Store::location($latitude, $longitude, $range)
-                ->get();
-            while ($stores->count() < $count) {
-                $range += 10;
-                $stores = Store::location($latitude, $longitude, $range)
                     ->take($count)
                     ->get();
-            }
-
+            // while ($stores->count() < $count) {
+            //     $range  += 20;
+            //     $stores = Store::location($latitude, $longitude, $range)
+            //         ->take($count)
+            //         ->get();
+            // }
         }
         else {
-            $stores = Store::inRandomOrder()->take($count)->get();
+            $stores = "Tidak ditemukan";
+            // $stores = Store::inRandomOrder()->take($count)->get();
         }
 
         return view ('website.recommendation',compact('stores','latitude','longitude'));
     }
 
-    /**
+    /*
      * direction-page
      *
      * @return void
@@ -66,8 +74,8 @@ class WebsiteController extends Controller
     public function directionPage(Request $request)
     {
         $directionTypes = $this->directionType();
-
-        return view('website.direction', compact('directionTypes')); 
+        $stores = Store::all();
+        return view('website.direction', compact('directionTypes','stores')); 
       
     }
 
@@ -90,23 +98,30 @@ class WebsiteController extends Controller
 
     public function directionStore(Request $request)
     {
-        // dd($request->all());
-        if($request->type == "1"){
-            // dd($request->type);
-            urlencode($destination = $request->address);
-            urlencode($origin = $request->start_location);
-            $url = "https://www.google.com/maps/dir/?api=1&origin=".$origin."&destination=".$destination;
-            // https://maps.google.com?saddr=".$origin."&daddr=".$destination314+Avery+Avenue+Syracuse+NY+13204
-            return redirect()->away($url);
-           
-        }else{
-            $lat = $request->latitude;
-            $lang = $request->longitude;
+        $id = ($request->store_id);
+        $get_store = Store::find($id);
+        $lat_dest = $get_store->latitude;
+        $long_dest = $get_store->longitude;
 
-            $lat1 = request()->get('lat');
-            $lon = request()->get('lon');
-            $url = "https://www.google.com/maps/dir/Current+Location/".$lat.",".$lang;
-            return redirect()->away($url);
-        }
+        $url = "https://www.google.com/maps/dir/Current+Location/".$lat_dest.",".$long_dest;
+        return redirect()->away($url);
+    
+        // if($request->type == "1"){
+        //     // dd($request->type);
+        //     urlencode($destination = $request->address);
+        //     urlencode($origin = $request->start_location);
+        //     $url = "https://www.google.com/maps/dir/?api=1&origin=".$origin."&destination=".$destination;
+        //     $url = "https://www.google.com/maps/dir/?api=1&origin=".$origin."&destination=".$lat_dest.",".$long_dest;
+        //     return redirect()->away($url);
+           
+        // }else{
+        //     $lat = $request->latitude;
+        //     $lang = $request->longitude;
+
+        //     $lat1 = request()->get('lat');
+        //     $lon = request()->get('lon');
+        //     $url = "https://www.google.com/maps/dir/Current+Location/".$lat.",".$lang;
+        //     return redirect()->away($url);
+        // }
     }
 }

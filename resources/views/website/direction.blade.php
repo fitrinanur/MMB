@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- @push('styles')
-    @mapstyles
-@endpush --}}
 <nav class="navbar navbar-expand-md shadow-sm">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -38,7 +35,7 @@
                     <a class="nav-link" href="{{ route('website.nearly')}}">Toko Terdekat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('website.direction')}}">Rute Wisata</a>
+                    <a class="nav-link" href="{{ route('website.direction')}}">Rute Toko</a>
                 </li>
             </ul>
 
@@ -49,11 +46,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
-                {{-- @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif --}}
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -81,7 +73,8 @@
 <div class="container">
     <div class="card" style="margin:10px;">
         <div class="card-body">
-            <h3>Rute Wisata</h3>
+            <h3>Rute Toko</h3>
+            <p></p>
             <hr>
             <div class="row">
                 <div class="col-lg-6">
@@ -90,25 +83,29 @@
                         <label for="exampleInputEmail1">Lokasi Awal</label><br>
                         <div class="form-row">
                             <div class="col">
+                                <button type="button" class="btn btn-info" id="get-mylocation">Ambil Lokasi Saat Ini</button>
+                             </div>
+                            <div class="col">
                                 <input type="text" class="form-control start_location" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 placeholder="Lokasi Awal" name="start_location">
                                 <div class="form-row">
-                                    <div class="col"> 
+                                    <div class="col-md-6"> 
+                                        <label for="exampleInputEmail1">Latitude saat ini : </label>
                                         <input type="text" class="form-control latitude_awal" id="exampleInputEmail1" aria-describedby="emailHelp"
                                         placeholder="Lokasi Awal" name="latitude_awal">
                                     </div>
-                                    <div class="col"><input type="text" class="form-control longitude_awal" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Longitude saat ini: </label>
+                                        <input type="text" class="form-control longitude_awal" id="exampleInputEmail1" aria-describedby="emailHelp"
                                         placeholder="Lokasi Awal" name="longitude_awal">
                                     </div>
                                 </div>
-                                <small id="emailHelp" class="form-text text-muted">Masukan lokasi awal yang anda inginkan</small>
+                                {{-- <small id="emailHelp" class="form-text text-muted">Masukan lokasi awal yang anda inginkan</small> --}}
                                
                             </div>
-                            <div class="col">
-                               <button type="button" class="btn btn-info" id="get-mylocation">Ambil Lokasi Saat Ini</button>
-                            </div>
+                            
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputEmail1">Jenis Input Destinasi</label><br>
                             <select class="custom-select destinationType" name="type">
                                 <option selected>Pilih</option>
@@ -120,6 +117,12 @@
                         <div class="form-group address-box">
                             <label for="exampleInputEmail1">Alamat</label><br>
                             <input type="text" name="address" id="address" class="form-control" placeholder="Masukkan Alamat">
+                            <select class="custom-select destinationType" name="store_id">
+                                <option selected>Pilih Toko</option>
+                                @foreach ($stores as $key => $store)
+                                    <option value="{{$store->id}}" name="toko">{{$store->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group coordinat-box">
                             <div class="row">
@@ -134,6 +137,15 @@
                                 </div>
                             </div>
                            
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Jenis Input Destinasi</label><br>
+                            <select class="custom-select destinationType" name="store_id">
+                                <option selected>Pilih Toko</option>
+                                @foreach ($stores as $key => $store)
+                                    <option value="{{$store->id}}" name="toko">{{$store->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
@@ -152,7 +164,7 @@
         $('.coordinat-box').hide();
         $(".latitude_awal").hide();
         $(".longitude_awal").hide();
-
+        $(".start_location").hide();
 
         $('.destinationType').on('change', function() {
             if($('.destinationType').val() == 1){
@@ -185,6 +197,7 @@
 
                     $(".latitude_awal").val(lat);
                     $(".longitude_awal").val(lng);
+                    $("#get-mylocation").prop('disabled', true);
                     
                     var google_map_pos = new google.maps.LatLng( lat, lng );
     

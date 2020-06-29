@@ -22,7 +22,6 @@
     }
 </style>
 @endpush
-
     <div id=recommendation>
     </div>
 @stop

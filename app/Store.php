@@ -25,19 +25,20 @@ class Store extends Model
         return $this->morphMany(Picture::class, 'pictureable');
     }
 
-    public function scopeLocation(Builder $query, $latitude, $longitude, $radius = 10){
+    public function scopeLocation(Builder $query, $latitude, $longitude, $radius = 30){
         $haversine = '( 3959 * acos( cos( radians('.$latitude.') ) *
 			         cos( radians( latitude ) )
 			         * cos( radians( longitude ) - radians('.$longitude.')
 			         ) + sin( radians('.$latitude.') ) *
 			         sin( radians( latitude ) ) )
-			       ) AS distance';
+                   ) AS distance';
         $where =   "ROUND(( 10  * 3956 * acos( cos( radians('$latitude') ) * "
             . "cos( radians(latitude) ) * "
             . "cos( radians(longitude) - radians('$longitude') ) + "
             . "sin( radians('$latitude') ) * "
             . "sin( radians(latitude) ) ) ) ,8) <=". $radius
             .' and latitude IS NOT NULL';
+       
         return $query->select('stores.*')
             ->selectRaw($haversine)
             ->whereRaw($where)

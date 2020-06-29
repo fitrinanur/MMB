@@ -31,7 +31,7 @@
         }
 
         .top-header {
-            background-color: #3F1871;
+            background-color: #D0303F;
             font-family: 'Source Sans Pro', sans-serif;
         }
 
@@ -151,11 +151,11 @@
                                         <li><a href="#" title="Twitter"
                                                 target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                         </li>
-                                        <li><a href="#"
+                                        <li><a href="https://www.instagram.com/margomurahbaru/?hl=id"
                                                 title="Instagram" target="_blank"><i class="fa fa-instagram"
                                                     aria-hidden="true"></i></a>
                                         </li>
-                                        <li><a href="#" title="Youtube"
+                                        <li><a href="https://www.youtube.com/channel/UCdOLcunh60626r-Q86qNo_g" title="Youtube"
                                                 target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                         </li>
                                     </ul>
