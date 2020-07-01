@@ -46,10 +46,10 @@
             if (position === undefined) {
                 alert('Your Position Undefined')
             } else {
-                // let lat = position.coords.latitude;
-                // let lon = position.coords.longitude;
-                let lat = -7.746858;
-                let lon = 110.390166;
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+                // let lat = -7.746858;
+                // let lon = 110.390166;
                 console.log(lat);
                 console.log(lon);
 
