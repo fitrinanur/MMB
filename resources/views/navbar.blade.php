@@ -1,6 +1,6 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 
-@section('content')
+{{-- @section('content') --}}
     <nav class="navbar navbar-expand-md shadow-sm">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -27,6 +27,16 @@
                                 <a class="dropdown-item" href="{{ route('store.index') }}">Data Toko</a>
                                 <a class="dropdown-item" href="{{ route('product-type.index') }}">Data Kategori Furniture</a>
                                 <a class="dropdown-item" href="{{ route('product.index') }}">Data Furniture</a>  
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Data Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('setting.index') }}">Data Mahasiswa</a>
+                                <a class="dropdown-item" href="{{ route('motto.index') }}">Data Visi dan Misi</a>
                             </div>
                         </li>
                         @endif
@@ -75,4 +85,4 @@
             </div>
         </div>
     </nav>
-@endsection
+{{-- @endsection --}}

@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,6 +25,8 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::resource('store', 'StoreController');
     Route::resource('product', 'ProductController');
     Route::resource('product-type', 'ProductTypeController');
+    Route::resource('setting', 'SettingController');
+    Route::resource('motto', 'MottoController');
 });
 
 Route::get('/nearly-page','WebsiteController@nearlyPage')->name('website.nearly');

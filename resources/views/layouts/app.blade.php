@@ -135,7 +135,7 @@
                         <div class="col-md-6">
                             <nav class="top-nav">
                                 <div class="top-title-nav">
-                                    <a href="#" target="_blank">Margo Murah Baru</a>
+                                    <a href="{{ route('home') }}" target="_blank">Margo Murah Baru</a>
                                 </div>
                             </nav>
                         </div>
@@ -170,8 +170,26 @@
 
         @include('flash::message')
     <main>
+        @include('navbar')
         @yield('content')
     </main>
+
+        {{-- <footer id="footer" class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="copyright">
+                            <p>Surakarta</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="pull-right number_pengaduan">
+                           
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer> --}}
     </div>
     @stack('javascript')
 </body>

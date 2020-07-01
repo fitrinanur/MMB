@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md shadow-sm">
+{{-- <nav class="navbar navbar-expand-md shadow-sm">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home')}}">Home</a>
+                    <a class="nav-link" href="{{ route('welcome')}}">Home</a>
                 </li>
                 @guest
                 @else
@@ -26,6 +26,9 @@
                             <a class="dropdown-item" href="{{ route('product-type.index') }}">Data Kategori Furniture</a>
                             <a class="dropdown-item" href="{{ route('product.index') }}">Data Furniture</a>  
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('setting.index')}}">Setting</a>
                     </li>
                     @endif
                 @endguest
@@ -67,7 +70,7 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> --}}
 <div class="container row-fluid">
     <div class="card" style="margin-top:10px;">
         <div class="card-body">
