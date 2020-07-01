@@ -1,5 +1,6 @@
 <?php
-
+use App\Setting;
+use App\Motto;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +13,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $settings = Setting::all();
+    $vission = Motto::where('category','visi')->get();
+    $mission = Motto::where('category','misi')->get();
+    return view('welcome',compact('settings','vission','mission'));
 });
 
 

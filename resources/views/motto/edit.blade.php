@@ -20,15 +20,16 @@
         <div class="card" style="margin-top:0px;">
             <div class="card-body">
                 <h4 class="card-title">Tambah Data Visi dan Misi</h4>
-                <form action="{{ route('motto.update')}}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('motto.update',$motto)}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Kategori</label>
                         <select class="form-control select2-single {{ $errors->has('category') ? ' is-invalid' : '' }}"
                             name="category" id="category" required>
                             @foreach ($categories as $category)
-                            <option value="{{ $category->name }}" @if ($motto->category == $category->name) selected
-                                @endif>{{$category->name}}</option>
+                            <option value="{{ $category }}" @if ($motto->category == $category) selected
+                                @endif>{{$category}}</option>
                             @endforeach
                         </select>
                         @if ($errors->has('category'))
@@ -39,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description">{{$motto->desc}}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Update Visi dan Misi</button>
                 </form>

@@ -26,8 +26,8 @@
                         <label for="exampleFormControlInput1">Kategori</label>
                         <select class="form-control select2-single {{ $errors->has('category') ? ' is-invalid' : '' }}"
                             name="category" id="category" required>
-                            @foreach ($categories as $category)
-                            <option value="{{ $category->name }}">{{$category->name}}</option>
+                            @foreach ($categories as $key => $category)
+                            <option value="{{ $category }}">{{$category}}</option>
                             @endforeach
                         </select>
                         @if ($errors->has('category'))

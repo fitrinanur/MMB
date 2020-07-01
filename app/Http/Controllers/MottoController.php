@@ -64,7 +64,9 @@ class MottoController extends Controller
      */
     public function edit($id)
     {
-        return view('motto.edit',compact('motto'));
+        $categories = $this->categories();
+        $motto = Motto::findOrFail($id);
+        return view('motto.edit',compact('categories', 'motto'));
     }
 
     /**

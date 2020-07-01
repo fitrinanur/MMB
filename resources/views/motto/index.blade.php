@@ -34,7 +34,7 @@
                     <tbody>
                         @foreach($mottos as $key => $motto)
                         <tr>
-                            <td>{{ $motto+1 }}</td>
+                            <td>{{ $key+1 }}</td>
                             <td>{{ $motto->category }}</td>
                             <td>{{ $motto->desc }}</td>
                             <td>

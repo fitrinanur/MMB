@@ -22,8 +22,10 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
-     body {
-            /* background-image: url("{{ asset('simple-pattern.jpeg') }}") ; */
+        body {
+            /* background-image: url("https://previews.123rf.com/images/olgastocker/olgastocker1710/olgastocker171000232/88854284-vector-minimalist-background-simple-modern-geometric-seamless-pattern-with-small-thin-lines-squares-.jpg") ; */
+            /* opacity: 100px !important; */
+            background-color:gainsboro;
             background-repeat: repeat-x repeat-y;
         }
 
@@ -66,6 +68,7 @@
         }
         .navbar {
             padding: 7px 0px 13px 13px !important;
+            background-color: white;
         }
 
         .navbar-collapse {
@@ -118,9 +121,15 @@
             font-size: 16px;
         }
 
-    </style>
-        </style>
+        .about {
+            border: grey solid 1px;
+            padding: 20px;
+            margin: 0px 10px 10px 0px ;
+            text-align: center;
+            background-color: white
+        }
 
+    </style>
     </head>
     <body>
         <header id="header" class="site-header">
@@ -164,15 +173,21 @@
         @include('navbar')
         <div class="container">
             <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="img-logo">
-                    <img src="https://placehold.co/200x220" alt="" style="margin: 30px 0px 30px 250px">
+                    <img src="https://1.bp.blogspot.com/-ZT52Eel0ea8/XTsPWjVjkaI/AAAAAAAAAHo/-eqTSwanuUUMNssOPEBiGt0EH_ov6mJfACLcBGAs/s1600/5.STMIK.png" width="200px" height="200" alt="" style="margin: 30px 0px 30px 350px">
+                    <img src="https://ecs7-p.tokopedia.net/img/cache/215-square/shops-1/2018/10/13/3009150/3009150_dc0191e3-27ef-45e9-bc7e-35da89f881fe.png" width="200px" height="200" alt="" style="margin: 30px 0px 30px 10px">
                 </div>
                 <div class="about">
-                    <h3>JUDUL : SISTEM BLA BLA BLA</h3>
-                    <p>Penyampai: NOVITA SARI AJIJAH<br>
-                    NIM : 123456789</p>
+                    @foreach($settings as $setting)
+                    <h4>{{$setting->title}}</h4>
+                    <p>
+                    {{ ucwords($setting->name)}}<br>
+                    {{ $setting->nim }}<br/>
+                    {{ ucwords($setting->prodi) }}</p>
+
                     <p>STMIK SINAR NUSANTARA</p>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -183,7 +198,11 @@
                                         <h5>VISI</h5>
                                     </div>
                                     <hr>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta maxime possimus pariatur, aspernatur quisquam enim. Velit assumenda labore sit vitae consectetur esse atque impedit itaque, et perferendis minima quibusdam ratione laudantium corporis amet natus id veritatis voluptatem magnam facere neque cupiditate nostrum dolores. Saepe ea tenetur blanditiis fugiat, doloribus dolore?</p>
+                                    <ul>
+                                    @foreach($vission as $visi)
+                                        <li>{{$visi->desc}}</li>
+                                    @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -193,10 +212,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="title">
-                                        <h5>VISI</h5>
+                                        <h5>MISI</h5>
                                     </div>
                                     <hr>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta maxime possimus pariatur, aspernatur quisquam enim. Velit assumenda labore sit vitae consectetur esse atque impedit itaque, et perferendis minima quibusdam ratione laudantium corporis amet natus id veritatis voluptatem magnam facere neque cupiditate nostrum dolores. Saepe ea tenetur blanditiis fugiat, doloribus dolore?</p>
+                                    <ul>
+                                    @foreach($mission as $misi)
+                                    <li>{{$misi->desc}}</li>
+                                    @endforeach  
+                                    </ul>  
                                 </div>
                             </div>
                         </div>
@@ -204,12 +227,12 @@
                 </div>
 
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="slider" style="padding-top: 30px;">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="https://placehold.co/600x400" class="d-block w-100" alt="...">
+                        <img src="{{ public_path('storage/images/stores/5ef5922e43f3d.jpeg')}}" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
                         <img src="https://placehold.co/600x400" class="d-block w-100" alt="...">
@@ -229,7 +252,7 @@
                   </div>
                 </div>
                 
-            </div>
+            </div> --}}
             
         </div>
         </div>
