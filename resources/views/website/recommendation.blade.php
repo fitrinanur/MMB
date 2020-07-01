@@ -138,7 +138,7 @@
                         <iframe width="100%" height="300" marginwidth="0"
                             src="https://maps.google.com/maps?q={{ $store->latitude }},{{ $store->longitude }}&hl=es;z=16&amp;output=embed">
                         </iframe><br>
-                        <div class="header-info">
+                        {{-- <div class="header-info">
                             <ul class="header-social">
                                 <li style="background-color:tomato"><a href="#"
                                         title="Instagram" target="_blank" ><i class="fa fa-instagram"
@@ -148,7 +148,7 @@
                                         target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
-                        </div><!-- .header-info -->
+                        </div><!-- .header-info --> --}}
                     </div>
                 </div>
 
