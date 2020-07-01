@@ -45,7 +45,7 @@
                         <a class="nav-link" href="{{ route('website.nearly')}}">Toko Terdekat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('website.direction')}}">Rute Wisata</a>
+                        <a class="nav-link" href="{{ route('website.direction')}}">Rute toko</a>
                     </li>
                 </ul>
 
