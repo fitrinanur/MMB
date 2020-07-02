@@ -99,7 +99,7 @@
     </div>
     <div class="card" style="margin-top:10px;">
         <div class="card-body">
-            <h3 class="card-title">Rekomendasi Wisata Disekitar Anda</h3>
+            <h3 class="card-title">Rekomendasi Toko Disekitar Anda</h3>
             @foreach ($stores as $store)
             <div class="col-lg-12">
                 <div class="row">
