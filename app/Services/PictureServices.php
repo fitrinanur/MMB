@@ -17,8 +17,8 @@ class PictureService
             case 'store':
                 $folder = 'stores';
                 break;
-            case 'user':
-                $folder = 'user';
+            case 'product':
+                $folder = 'products';
                 break;
             default:
                 $folder = '';

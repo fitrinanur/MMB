@@ -15,6 +15,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home')}}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('website.store')}}">Toko</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('website.product')}}">Product</a>
+                    </li>
                     @guest
                     @else
                         @if( Auth::user()->name == "admin" )

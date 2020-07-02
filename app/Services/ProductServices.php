@@ -29,14 +29,13 @@ class ProductService
         if ($request->picture) {
             foreach ($request->picture as $pict) {
                 $pictureService = new PictureService();
-                $picture = $pictureService->store($pict, 'products');
+                $picture = $pictureService->store($pict, 'product');
                 $product->pictures()->create([
                     'path' => $picture['path'],
                     'file_name' => $picture['name']
                 ]);
             }
         }
-
         return $product;
     }
 

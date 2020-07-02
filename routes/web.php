@@ -33,6 +33,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::resource('motto', 'MottoController');
 });
 
+Route::get('/website-store','WebsiteController@displayStore')->name('website.store');
+Route::get('/website-product','WebsiteController@displayProduct')->name('website.product');
+Route::get('/website-product/{id}','WebsiteController@displayProductShow')->name('website.product.show');
+
 Route::get('/nearly-page','WebsiteController@nearlyPage')->name('website.nearly');
 Route::post('/nearly-process','WebsiteController@nearlyProcess')->name('website.nearlyProcess');
 Route::post('/recommendation','WebsiteController@getRecommendation')->name('recommendation');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Store;
+use App\ProductType;
+use App\Product;
 use App\Services\StoreService;
 
 class WebsiteController extends Controller
@@ -123,5 +125,25 @@ class WebsiteController extends Controller
         //     $url = "https://www.google.com/maps/dir/Current+Location/".$lat.",".$lang;
         //     return redirect()->away($url);
         // }
+    }
+
+    public function displayStore()
+    {
+        $stores = Store::all();
+        return view('website.store', compact('stores'));
+    }
+
+    public function displayProduct()
+    {
+        $product_types = ProductType::all();
+        $products = Product::all();
+        return view('website.product', compact('products','product_types'));
+    }
+    public function displayProductShow($id)
+    {
+       
+        $product_types = ProductType::all();
+        $products = Product::findOrFail($id);
+        return view('website.detail', compact('products','product_types'));
     }
 }

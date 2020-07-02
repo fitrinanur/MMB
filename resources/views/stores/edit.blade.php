@@ -66,11 +66,11 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="exampleFormControlInput1">Latitude</label>
-                            <input type="text" name="latitude" value="{{ $store->lat }}" class="form-control" id="exampleFormControlInput1">
+                            <input type="text" name="latitude" value="{{ $store->latitude }}" class="form-control" id="exampleFormControlInput1">
                         </div>
                         <div class="col">
                             <label for="exampleFormControlInput1">Longitude</label>
-                            <input type="text" name="longitude" value="{{ $store->long }}" class="form-control" id="exampleFormControlInput1">
+                            <input type="text" name="longitude" value="{{ $store->longitude }}" class="form-control" id="exampleFormControlInput1">
                         </div>
                     </div><br>
                     <div class="form-group">
