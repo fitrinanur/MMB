@@ -22,6 +22,7 @@ class ProductService
         
         $product = new Product();
         $product->name = $request->name;
+        $product->price = $request->price;
         $product->productType()->associate($request->product_type);
         $product->desc = $request->description;
         $product->save();
@@ -49,6 +50,7 @@ class ProductService
     public function update($request, $product)
     {
         $product->name = $request->name;
+        $product->price = $request->price;
         $product->product_type_id =$request->product_type;
         $product->desc = $request->description;
         $product->update();

@@ -49,6 +49,16 @@
                             @endif
                     </div>
                     <div class="form-group">
+                        <label for="exampleFormControlInput1">Harga Product</label>
+                        <input type="text" name="price" class="form-control" id="exampleFormControlInput1" required>
+
+                        @if ($errors->has('price'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('price') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlInput1">Gambar</label>
                         <input type="file" name="picture[]" class="form-control-file" id="image" multiple>
                         <div id="image_preview"></div>

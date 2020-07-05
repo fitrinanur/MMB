@@ -27,11 +27,21 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nama Product</label>
-                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value="{{ $product->name }}""required>
+                        <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value="{{ $product->name }} required>
 
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Harga Product</label>
+                        <input type="text" name="price" class="form-control" id="exampleFormControlInput1" value="{{ $product->price }} required>
+
+                        @if ($errors->has('price'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('price') }}</strong>
                         </span>
                         @endif
                     </div>
